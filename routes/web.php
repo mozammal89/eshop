@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('admin', function () {
+    return view('admin.admin_master');
+});
+Route::get('public', function () {
+    return view('public.public_master');
+});
 
 Auth::routes();
 

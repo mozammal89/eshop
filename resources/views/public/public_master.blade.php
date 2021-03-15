@@ -8,12 +8,13 @@
 		@{{test}}
 
 		<p>
-		    <router-link to="/test1">Go to Test one</router-link>
+		    <!-- <router-link to="/test3">Go to Test three</router-link> -->
 		</p>
 		<p>
-		    <router-link to="/test2">Go to Test two</router-link>
+		    <!-- <router-link to="/test4">Go to Test four</router-link> -->
 	  	</p>
-	  	<router-view></router-view>
+	  	<public-master></public-master>
+	  	<!-- <router-view></router-view> -->
 	</div>
 <script src="{{asset('js/app.js')}}"></script>
 </body>

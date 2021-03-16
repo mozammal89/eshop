@@ -23,6 +23,18 @@ Route::get('public', function () {
     return view('public.public_master');
 });
 
+
+Route::prefix('admin')->group(base_path('routes/admin.php'));
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+Route::get('/{path}', function () {
+    return view('public.public_master');
+});

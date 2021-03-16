@@ -6,10 +6,22 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        <h1>Hello Public</h1>
+                        <h1>Hello Public Master</h1>
+                        <router-link to="/test4">Test</router-link>
+                        <router-view></router-view>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+import ExampleComponent from '../ExampleComponent'
+export default {
+    name: "PublicMaster",
+    components: {
+    ExampleComponent,
+    }
+}
+</script>

@@ -37641,34 +37641,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Example Component")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              { attrs: { id: "admin-master" } },
-              [
-                _c("h1", [_vm._v("Hello Admin Master")]),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: "/admin/test4" } }, [
-                  _vm._v("Test")
-                ]),
-                _vm._v(" "),
-                _c("router-view")
-              ],
-              1
-            )
-          ])
-        ])
-      ])
-    ])
-  ])
+  return _c(
+    "div",
+    { attrs: { id: "admin-master" } },
+    [
+      _c("h1", [_vm._v("Hello Admin Master")]),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: "/admin/test4" } }, [_vm._v("Test")]),
+      _vm._v(" "),
+      _c("router-view")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53222,6 +53206,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/admin.scss":
+/*!***********************************!*\
+  !*** ./resources/sass/admin.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -53234,14 +53229,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/admin.js ./resources/sass/app.scss ***!
-  \***************************************************************/
+/*!*******************************************************************************************!*\
+  !*** multi ./resources/js/admin.js ./resources/sass/app.scss ./resources/sass/admin.scss ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! D:\PHP\laragon\www\eshop\resources\js\admin.js */"./resources/js/admin.js");
-module.exports = __webpack_require__(/*! D:\PHP\laragon\www\eshop\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\PHP\laragon\www\eshop\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\PHP\laragon\www\eshop\resources\sass\admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

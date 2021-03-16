@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title>admin</title>
+	<link rel="stylesheet" type="text/css" href="{{asset('css/admin.css')}}">
 </head>
 <body>
-<h1>This is admin</h1>
 <div id="appadmin">
 	@{{test}}
 	<p>

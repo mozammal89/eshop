@@ -7,21 +7,14 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import ExampleCompoent from '../components/ExampleComponent'
-
-// const test3 = { template: '<div>this is test three</div>' }
-const test4 = { template: '<div>this is test four (Admin)</div>' }
-
-
+import AdminDeshboard from '../components/admin/AdminDeshboard'
 
 const router = new VueRouter({
   mode: 'history',
 
   routes :[
-  	{ path: '/test3', component: ExampleCompoent },
-  	{ path: '/admin/test4', component: test4 }
+  	{ path: '/admin', component: AdminDeshboard },
   ]
 })
-
 
 export default router ;

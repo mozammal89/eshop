@@ -19,6 +19,5 @@ const appadmin = new Vue({
     el: '#appadmin',
     router,
     data:{
-    	test:'This is admin vue'
     }
 });

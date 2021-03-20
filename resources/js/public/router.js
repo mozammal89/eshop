@@ -6,18 +6,13 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import ExampleCompoent from '../components/ExampleComponent'
-// const test3 = { template: '<div>this is test three</div>' }
-const test4 = { template: '<div>this is test four</div>' }
-
-
+import Home from '../components/public/home'
 
 const router = new VueRouter({
   mode: 'history',
 
   routes :[
-  	{ path: '/test3', component: ExampleCompoent },
-  	{ path: '/test4', component: test4 }
+  	{ path: '/public', component: Home },
   ]
 })
 

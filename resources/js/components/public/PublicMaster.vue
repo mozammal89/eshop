@@ -1,27 +1,19 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        <h1>Hello Public Master</h1>
-                        <router-link to="/test4">Test</router-link>
-                        <router-view></router-view>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div>
+        <public-header></public-header>
+        <router-view></router-view>
+        <public-footer></public-footer>
     </div>
 </template>
 
 <script>
-import ExampleComponent from '../ExampleComponent'
+import PublicFooter from './partial/PublicFooter.vue'
+import PublicHeader from './partial/PublicHeader.vue'
 export default {
     name: "PublicMaster",
     components: {
-    ExampleComponent,
+        PublicHeader,
+        PublicFooter,
     }
 }
 </script>

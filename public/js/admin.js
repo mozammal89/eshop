@@ -2216,8 +2216,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "AdminDeshboard"
+  name: "AdminDeshboard",
+  data: function data() {
+    return {
+      user: this.$store.state.test,
+      userdata: this.$store.getters.userinfo
+    };
+  },
+  methods: {
+    changeData: function changeData(data) {
+      $this.$store.dispatch("changeAbcData", data);
+    }
+  },
+  computed: {
+    abcdata: function abcdata() {
+      return this.$store.getters.abcinfo;
+    }
+  }
 });
 
 /***/ }),
@@ -38661,542 +38684,513 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "admin-deshboard" } }, [
+    _c("div", { staticClass: "content-wrapper" }, [
+      _c("div", { staticClass: "content-header" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row mb-2" }, [
+            _c("div", { staticClass: "col-sm-6" }, [
+              _c("h1", { staticClass: "m-0 text-dark" }, [
+                _vm._v("Dashboard v3")
+              ]),
+              _vm._v(
+                "\n            User Info " + _vm._s(_vm.user) + "\n            "
+              ),
+              _c("br"),
+              _vm._v("\n            User Info2 "),
+              _c("span", { staticStyle: { color: "red" } }, [
+                _vm._v(_vm._s(_vm.userdata.name))
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  attrs: { href: "" },
+                  on: {
+                    click: function($event) {
+                      return _vm.changeData("Update")
+                    }
+                  }
+                },
+                [_vm._v(" Change Data ")]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            abc data " + _vm._s(_vm.abcdata) + "\n          "
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "admin-deshboard" } }, [
-      _c("div", { staticClass: "content-wrapper" }, [
-        _c("div", { staticClass: "content-header" }, [
-          _c("div", { staticClass: "container-fluid" }, [
-            _c("div", { staticClass: "row mb-2" }, [
-              _c("div", { staticClass: "col-sm-6" }, [
-                _c("h1", { staticClass: "m-0 text-dark" }, [
-                  _vm._v("Dashboard v3")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6" }, [
-                _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
-                  _c("li", { staticClass: "breadcrumb-item" }, [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "breadcrumb-item active" }, [
-                    _vm._v("Dashboard v3")
-                  ])
-                ])
-              ])
-            ])
-          ])
+    return _c("div", { staticClass: "col-sm-6" }, [
+      _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+        _c("li", { staticClass: "breadcrumb-item" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _c("div", { staticClass: "container-fluid" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-6" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-header border-0" }, [
-                    _c(
-                      "div",
-                      { staticClass: "d-flex justify-content-between" },
-                      [
-                        _c("h3", { staticClass: "card-title" }, [
-                          _vm._v("Online Store Visitors")
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { attrs: { href: "javascript:void(0);" } }, [
-                          _vm._v("View Report")
-                        ])
-                      ]
-                    )
+        _c("li", { staticClass: "breadcrumb-item active" }, [
+          _vm._v("Dashboard v3")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header border-0" }, [
+                _c("div", { staticClass: "d-flex justify-content-between" }, [
+                  _c("h3", { staticClass: "card-title" }, [
+                    _vm._v("Online Store Visitors")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("div", { staticClass: "d-flex" }, [
-                      _c("p", { staticClass: "d-flex flex-column" }, [
-                        _c("span", { staticClass: "text-bold text-lg" }, [
-                          _vm._v("820")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Visitors Over Time")])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          staticClass: "ml-auto d-flex flex-column text-right"
-                        },
-                        [
-                          _c("span", { staticClass: "text-success" }, [
-                            _c("i", { staticClass: "fas fa-arrow-up" }),
-                            _vm._v(" 12.5%\n                    ")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text-muted" }, [
-                            _vm._v("Since last week")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "position-relative mb-4" }, [
-                      _c("canvas", {
-                        attrs: { id: "visitors-chart", height: "200" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "d-flex flex-row justify-content-end" },
-                      [
-                        _c("span", { staticClass: "mr-2" }, [
-                          _c("i", {
-                            staticClass: "fas fa-square text-primary"
-                          }),
-                          _vm._v(" This Week\n                  ")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [
-                          _c("i", { staticClass: "fas fa-square text-gray" }),
-                          _vm._v(" Last Week\n                  ")
-                        ])
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-header border-0" }, [
-                    _c("h3", { staticClass: "card-title" }, [
-                      _vm._v("Products")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-tools" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-tool btn-sm",
-                          attrs: { href: "#" }
-                        },
-                        [_c("i", { staticClass: "fas fa-download" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-tool btn-sm",
-                          attrs: { href: "#" }
-                        },
-                        [_c("i", { staticClass: "fas fa-bars" })]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body p-0" }, [
-                    _c(
-                      "table",
-                      {
-                        staticClass: "table table-striped table-valign-middle"
-                      },
-                      [
-                        _c("thead", [
-                          _c("tr", [
-                            _c("th", [_vm._v("Product")]),
-                            _vm._v(" "),
-                            _c("th", [_vm._v("Price")]),
-                            _vm._v(" "),
-                            _c("th", [_vm._v("Sales")]),
-                            _vm._v(" "),
-                            _c("th", [_vm._v("More")])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tbody", [
-                          _c("tr", [
-                            _c("td", [
-                              _c("img", {
-                                staticClass: "img-circle img-size-32 mr-2",
-                                attrs: {
-                                  src: "dist/img/default-150x150.png",
-                                  alt: "Product 1"
-                                }
-                              }),
-                              _vm._v(
-                                "\n                        Some Product\n                      "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v("$13 USD")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "small",
-                                { staticClass: "text-success mr-1" },
-                                [
-                                  _c("i", { staticClass: "fas fa-arrow-up" }),
-                                  _vm._v(
-                                    "\n                          12%\n                        "
-                                  )
-                                ]
-                              ),
-                              _vm._v(
-                                "\n                        12,000 Sold\n                      "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "text-muted",
-                                  attrs: { href: "#" }
-                                },
-                                [_c("i", { staticClass: "fas fa-search" })]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [
-                              _c("img", {
-                                staticClass: "img-circle img-size-32 mr-2",
-                                attrs: {
-                                  src: "dist/img/default-150x150.png",
-                                  alt: "Product 1"
-                                }
-                              }),
-                              _vm._v(
-                                "\n                        Another Product\n                      "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v("$29 USD")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "small",
-                                { staticClass: "text-warning mr-1" },
-                                [
-                                  _c("i", { staticClass: "fas fa-arrow-down" }),
-                                  _vm._v(
-                                    "\n                          0.5%\n                        "
-                                  )
-                                ]
-                              ),
-                              _vm._v(
-                                "\n                        123,234 Sold\n                      "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "text-muted",
-                                  attrs: { href: "#" }
-                                },
-                                [_c("i", { staticClass: "fas fa-search" })]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [
-                              _c("img", {
-                                staticClass: "img-circle img-size-32 mr-2",
-                                attrs: {
-                                  src: "dist/img/default-150x150.png",
-                                  alt: "Product 1"
-                                }
-                              }),
-                              _vm._v(
-                                "\n                        Amazing Product\n                      "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v("$1,230 USD")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c("small", { staticClass: "text-danger mr-1" }, [
-                                _c("i", { staticClass: "fas fa-arrow-down" }),
-                                _vm._v(
-                                  "\n                          3%\n                        "
-                                )
-                              ]),
-                              _vm._v(
-                                "\n                        198 Sold\n                      "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "text-muted",
-                                  attrs: { href: "#" }
-                                },
-                                [_c("i", { staticClass: "fas fa-search" })]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [
-                              _c("img", {
-                                staticClass: "img-circle img-size-32 mr-2",
-                                attrs: {
-                                  src: "dist/img/default-150x150.png",
-                                  alt: "Product 1"
-                                }
-                              }),
-                              _vm._v(
-                                "\n                        Perfect Item\n                        "
-                              ),
-                              _c("span", { staticClass: "badge bg-danger" }, [
-                                _vm._v("NEW")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v("$199 USD")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "small",
-                                { staticClass: "text-success mr-1" },
-                                [
-                                  _c("i", { staticClass: "fas fa-arrow-up" }),
-                                  _vm._v(
-                                    "\n                          63%\n                        "
-                                  )
-                                ]
-                              ),
-                              _vm._v(
-                                "\n                        87 Sold\n                      "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "text-muted",
-                                  attrs: { href: "#" }
-                                },
-                                [_c("i", { staticClass: "fas fa-search" })]
-                              )
-                            ])
-                          ])
-                        ])
-                      ]
-                    )
+                  _c("a", { attrs: { href: "javascript:void(0);" } }, [
+                    _vm._v("View Report")
                   ])
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-header border-0" }, [
-                    _c(
-                      "div",
-                      { staticClass: "d-flex justify-content-between" },
-                      [
-                        _c("h3", { staticClass: "card-title" }, [
-                          _vm._v("Sales")
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { attrs: { href: "javascript:void(0);" } }, [
-                          _vm._v("View Report")
-                        ])
-                      ]
-                    )
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "d-flex" }, [
+                  _c("p", { staticClass: "d-flex flex-column" }, [
+                    _c("span", { staticClass: "text-bold text-lg" }, [
+                      _vm._v("820")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Visitors Over Time")])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("div", { staticClass: "d-flex" }, [
-                      _c("p", { staticClass: "d-flex flex-column" }, [
-                        _c("span", { staticClass: "text-bold text-lg" }, [
-                          _vm._v("$18,230.00")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Sales Over Time")])
+                  _c(
+                    "p",
+                    { staticClass: "ml-auto d-flex flex-column text-right" },
+                    [
+                      _c("span", { staticClass: "text-success" }, [
+                        _c("i", { staticClass: "fas fa-arrow-up" }),
+                        _vm._v(" 12.5%\n                    ")
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          staticClass: "ml-auto d-flex flex-column text-right"
-                        },
-                        [
-                          _c("span", { staticClass: "text-success" }, [
-                            _c("i", { staticClass: "fas fa-arrow-up" }),
-                            _vm._v(" 33.1%\n                    ")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text-muted" }, [
-                            _vm._v("Since last month")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "position-relative mb-4" }, [
-                      _c("canvas", {
-                        attrs: { id: "sales-chart", height: "200" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "d-flex flex-row justify-content-end" },
-                      [
-                        _c("span", { staticClass: "mr-2" }, [
-                          _c("i", {
-                            staticClass: "fas fa-square text-primary"
-                          }),
-                          _vm._v(" This year\n                  ")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [
-                          _c("i", { staticClass: "fas fa-square text-gray" }),
-                          _vm._v(" Last year\n                  ")
-                        ])
-                      ]
-                    )
-                  ])
+                      _c("span", { staticClass: "text-muted" }, [
+                        _vm._v("Since last week")
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-header border-0" }, [
-                    _c("h3", { staticClass: "card-title" }, [
-                      _vm._v("Online Store Overview")
+                _c("div", { staticClass: "position-relative mb-4" }, [
+                  _c("canvas", {
+                    attrs: { id: "visitors-chart", height: "200" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "d-flex flex-row justify-content-end" },
+                  [
+                    _c("span", { staticClass: "mr-2" }, [
+                      _c("i", { staticClass: "fas fa-square text-primary" }),
+                      _vm._v(" This Week\n                  ")
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card-tools" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-sm btn-tool",
-                          attrs: { href: "#" }
-                        },
-                        [_c("i", { staticClass: "fas fa-download" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-sm btn-tool",
-                          attrs: { href: "#" }
-                        },
-                        [_c("i", { staticClass: "fas fa-bars" })]
-                      )
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-square text-gray" }),
+                      _vm._v(" Last Week\n                  ")
                     ])
-                  ]),
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header border-0" }, [
+                _c("h3", { staticClass: "card-title" }, [_vm._v("Products")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-tool btn-sm",
+                      attrs: { href: "#" }
+                    },
+                    [_c("i", { staticClass: "fas fa-download" })]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center border-bottom mb-3"
-                      },
-                      [
-                        _c("p", { staticClass: "text-success text-xl" }, [
-                          _c("i", { staticClass: "ion ion-ios-refresh-empty" })
-                        ]),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-tool btn-sm",
+                      attrs: { href: "#" }
+                    },
+                    [_c("i", { staticClass: "fas fa-bars" })]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body p-0" }, [
+                _c(
+                  "table",
+                  { staticClass: "table table-striped table-valign-middle" },
+                  [
+                    _c("thead", [
+                      _c("tr", [
+                        _c("th", [_vm._v("Product")]),
                         _vm._v(" "),
-                        _c(
-                          "p",
-                          { staticClass: "d-flex flex-column text-right" },
-                          [
-                            _c("span", { staticClass: "font-weight-bold" }, [
-                              _c("i", {
-                                staticClass:
-                                  "ion ion-android-arrow-up text-success"
-                              }),
-                              _vm._v(
-                                "\n                      12%\n                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "text-muted" }, [
-                              _vm._v("CONVERSION RATE")
-                            ])
-                          ]
-                        )
-                      ]
-                    ),
+                        _c("th", [_vm._v("Price")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Sales")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("More")])
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center border-bottom mb-3"
-                      },
-                      [
-                        _c("p", { staticClass: "text-warning text-xl" }, [
-                          _c("i", { staticClass: "ion ion-ios-cart-outline" })
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", [
+                          _c("img", {
+                            staticClass: "img-circle img-size-32 mr-2",
+                            attrs: {
+                              src: "dist/img/default-150x150.png",
+                              alt: "Product 1"
+                            }
+                          }),
+                          _vm._v(
+                            "\n                        Some Product\n                      "
+                          )
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "p",
-                          { staticClass: "d-flex flex-column text-right" },
-                          [
-                            _c("span", { staticClass: "font-weight-bold" }, [
-                              _c("i", {
-                                staticClass:
-                                  "ion ion-android-arrow-up text-warning"
-                              }),
-                              _vm._v(
-                                "\n                      0.8%\n                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "text-muted" }, [
-                              _vm._v("SALES RATE")
-                            ])
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center mb-0"
-                      },
-                      [
-                        _c("p", { staticClass: "text-danger text-xl" }, [
-                          _c("i", { staticClass: "ion ion-ios-people-outline" })
+                        _c("td", [_vm._v("$13 USD")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("small", { staticClass: "text-success mr-1" }, [
+                            _c("i", { staticClass: "fas fa-arrow-up" }),
+                            _vm._v(
+                              "\n                          12%\n                        "
+                            )
+                          ]),
+                          _vm._v(
+                            "\n                        12,000 Sold\n                      "
+                          )
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "p",
-                          { staticClass: "d-flex flex-column text-right" },
-                          [
-                            _c("span", { staticClass: "font-weight-bold" }, [
-                              _c("i", {
-                                staticClass:
-                                  "ion ion-android-arrow-down text-danger"
-                              }),
-                              _vm._v(
-                                "\n                      1%\n                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "text-muted" }, [
-                              _vm._v("REGISTRATION RATE")
-                            ])
-                          ]
-                        )
-                      ]
-                    )
+                        _c("td", [
+                          _c(
+                            "a",
+                            { staticClass: "text-muted", attrs: { href: "#" } },
+                            [_c("i", { staticClass: "fas fa-search" })]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("img", {
+                            staticClass: "img-circle img-size-32 mr-2",
+                            attrs: {
+                              src: "dist/img/default-150x150.png",
+                              alt: "Product 1"
+                            }
+                          }),
+                          _vm._v(
+                            "\n                        Another Product\n                      "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("$29 USD")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("small", { staticClass: "text-warning mr-1" }, [
+                            _c("i", { staticClass: "fas fa-arrow-down" }),
+                            _vm._v(
+                              "\n                          0.5%\n                        "
+                            )
+                          ]),
+                          _vm._v(
+                            "\n                        123,234 Sold\n                      "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            { staticClass: "text-muted", attrs: { href: "#" } },
+                            [_c("i", { staticClass: "fas fa-search" })]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("img", {
+                            staticClass: "img-circle img-size-32 mr-2",
+                            attrs: {
+                              src: "dist/img/default-150x150.png",
+                              alt: "Product 1"
+                            }
+                          }),
+                          _vm._v(
+                            "\n                        Amazing Product\n                      "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("$1,230 USD")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("small", { staticClass: "text-danger mr-1" }, [
+                            _c("i", { staticClass: "fas fa-arrow-down" }),
+                            _vm._v(
+                              "\n                          3%\n                        "
+                            )
+                          ]),
+                          _vm._v(
+                            "\n                        198 Sold\n                      "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            { staticClass: "text-muted", attrs: { href: "#" } },
+                            [_c("i", { staticClass: "fas fa-search" })]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("img", {
+                            staticClass: "img-circle img-size-32 mr-2",
+                            attrs: {
+                              src: "dist/img/default-150x150.png",
+                              alt: "Product 1"
+                            }
+                          }),
+                          _vm._v(
+                            "\n                        Perfect Item\n                        "
+                          ),
+                          _c("span", { staticClass: "badge bg-danger" }, [
+                            _vm._v("NEW")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("$199 USD")]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("small", { staticClass: "text-success mr-1" }, [
+                            _c("i", { staticClass: "fas fa-arrow-up" }),
+                            _vm._v(
+                              "\n                          63%\n                        "
+                            )
+                          ]),
+                          _vm._v(
+                            "\n                        87 Sold\n                      "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            { staticClass: "text-muted", attrs: { href: "#" } },
+                            [_c("i", { staticClass: "fas fa-search" })]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header border-0" }, [
+                _c("div", { staticClass: "d-flex justify-content-between" }, [
+                  _c("h3", { staticClass: "card-title" }, [_vm._v("Sales")]),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: "javascript:void(0);" } }, [
+                    _vm._v("View Report")
                   ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "d-flex" }, [
+                  _c("p", { staticClass: "d-flex flex-column" }, [
+                    _c("span", { staticClass: "text-bold text-lg" }, [
+                      _vm._v("$18,230.00")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Sales Over Time")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    { staticClass: "ml-auto d-flex flex-column text-right" },
+                    [
+                      _c("span", { staticClass: "text-success" }, [
+                        _c("i", { staticClass: "fas fa-arrow-up" }),
+                        _vm._v(" 33.1%\n                    ")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-muted" }, [
+                        _vm._v("Since last month")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "position-relative mb-4" }, [
+                  _c("canvas", { attrs: { id: "sales-chart", height: "200" } })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "d-flex flex-row justify-content-end" },
+                  [
+                    _c("span", { staticClass: "mr-2" }, [
+                      _c("i", { staticClass: "fas fa-square text-primary" }),
+                      _vm._v(" This year\n                  ")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-square text-gray" }),
+                      _vm._v(" Last year\n                  ")
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header border-0" }, [
+                _c("h3", { staticClass: "card-title" }, [
+                  _vm._v("Online Store Overview")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-sm btn-tool",
+                      attrs: { href: "#" }
+                    },
+                    [_c("i", { staticClass: "fas fa-download" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-sm btn-tool",
+                      attrs: { href: "#" }
+                    },
+                    [_c("i", { staticClass: "fas fa-bars" })]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between align-items-center border-bottom mb-3"
+                  },
+                  [
+                    _c("p", { staticClass: "text-success text-xl" }, [
+                      _c("i", { staticClass: "ion ion-ios-refresh-empty" })
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "d-flex flex-column text-right" }, [
+                      _c("span", { staticClass: "font-weight-bold" }, [
+                        _c("i", {
+                          staticClass: "ion ion-android-arrow-up text-success"
+                        }),
+                        _vm._v(
+                          "\n                      12%\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-muted" }, [
+                        _vm._v("CONVERSION RATE")
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between align-items-center border-bottom mb-3"
+                  },
+                  [
+                    _c("p", { staticClass: "text-warning text-xl" }, [
+                      _c("i", { staticClass: "ion ion-ios-cart-outline" })
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "d-flex flex-column text-right" }, [
+                      _c("span", { staticClass: "font-weight-bold" }, [
+                        _c("i", {
+                          staticClass: "ion ion-android-arrow-up text-warning"
+                        }),
+                        _vm._v(
+                          "\n                      0.8%\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-muted" }, [
+                        _vm._v("SALES RATE")
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between align-items-center mb-0"
+                  },
+                  [
+                    _c("p", { staticClass: "text-danger text-xl" }, [
+                      _c("i", { staticClass: "ion ion-ios-people-outline" })
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "d-flex flex-column text-right" }, [
+                      _c("span", { staticClass: "font-weight-bold" }, [
+                        _c("i", {
+                          staticClass: "ion ion-android-arrow-down text-danger"
+                        }),
+                        _vm._v(
+                          "\n                      1%\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-muted" }, [
+                        _vm._v("REGISTRATION RATE")
+                      ])
+                    ])
+                  ]
+                )
               ])
             ])
           ])
@@ -57458,12 +57452,31 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]); // this is vuex instance
 
 var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
-    test: "This is test",
-    abc: ''
+    test: "This is test Admin",
+    abc: 'update data',
+    user: {
+      name: 'mozammal',
+      mail: 'mozammal.bubt89@gmail.com'
+    }
   },
-  getters: {},
-  actions: {},
-  mutations: {}
+  getters: {
+    userinfo: function userinfo(state) {
+      return state.user;
+    },
+    abcinfo: function abcinfo(state) {
+      return state.abc;
+    }
+  },
+  actions: {
+    changeAbcData: function changeAbcData(context, payload) {
+      context.commit('dataMutate', payload);
+    }
+  },
+  mutations: {
+    dataMutate: function dataMutate(state, payload) {
+      return state.abc = payload;
+    }
+  }
 }); //   vuex instance end 
 
 var appadmin = new Vue({

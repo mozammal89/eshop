@@ -22,23 +22,38 @@ Vue.use(Vuex)
 
 // this is vuex instance 
 const store = new Vuex.Store({
-    state:{
-        test: "This is test",
-        abc: ''
+    state: {
+        test: "This is test Admin",
+        abc: 'update data',
+        user: {
+            name: 'mozammal',
+            mail: 'mozammal.bubt89@gmail.com'
+        }
     },
 
-    getters:{
+    getters: {
+        userinfo(state) {
+            return state.user
+        },
+        abcinfo(state) {
+            return state.abc
+        }
 
     },
 
-    actions:{
+    actions: {
+        changeAbcData(context, payload) {
+            context.commit('dataMutate', payload)
+        }
 
     },
 
-    mutations:{
-
+    mutations: {
+        dataMutate(state, payload) {
+            return state.abc = payload
+        }
     }
-  })
+})
 
 //   vuex instance end 
 
@@ -48,6 +63,6 @@ const appadmin = new Vue({
     el: '#appadmin',
     router,
     store,
-    data:{
+    data: {
     }
 });

@@ -15,8 +15,8 @@
                   <li>
                     <a href="#"><i class="mdi mdi-account"></i></a>
                     <ul>
-                      <li><a href="login.html">Login</a></li>
-                      <li><a href="login.html">Registar</a></li>
+                      <li><router-link :to="{name : 'UserLogin'}">Login</router-link></li>
+                      <li><router-link :to="{name : 'UserRegister'}">Registar</router-link></li>
                       <li><a href="my-account.html">My account</a></li>
                     </ul>
                   </li>

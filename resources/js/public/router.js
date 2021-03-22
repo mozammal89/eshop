@@ -7,12 +7,16 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '../components/public/home'
+import UserLogin from '../components/public/auth/UserLogin'
+import UserRegister from '../components/public/auth/UserRegister'
 
 const router = new VueRouter({
   mode: 'history',
 
   routes :[
-  	{ path: '/public', component: Home },
+  	{ path: '/', component: Home, name:'Home' },
+  	{ path: '/login', component: UserLogin, name:'UserLogin' },
+  	{ path: '/register', component: UserRegister, name:'UserRegister' },
   ]
 })
 

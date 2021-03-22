@@ -8,13 +8,9 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0 text-dark">Dashboard v3</h1>
-              User Info {{ user }}
+              {{ name }}
               <br />
-              User Info2 <span style="color: red">{{ userdata.name }}</span>
-              <br />
-              <a href="" @click="changeData('Update')"> Change Data </a>
-              <br />
-              abc data {{ abcdata }}
+              {{myName}}
             </div>
             <!-- /.col -->
             <div class="col-sm-6">
@@ -318,19 +314,9 @@ export default {
   name: "AdminDeshboard",
   data() {
     return {
-      user: this.$store.state.test,
-      userdata: this.$store.getters.userinfo,
+      name: this.$store.state.username,
+      myName: this.$store.getters['username/myName'],
     };
-  },
-  methods: {
-    changeData(data) {
-      $this.$store.dispatch("changeAbcData", data);
-    },
-  },
-  computed: {
-    abcdata() {
-      return this.$store.getters.abcinfo;
-    },
   },
 };
 </script>

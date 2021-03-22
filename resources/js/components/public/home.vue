@@ -101,6 +101,7 @@
           <div class="col-xs-12">
             <div class="section-title text-center">
               <h2>Featured Products</h2>
+              <h1>{{myName}}</h1>
             </div>
           </div>
         </div>
@@ -1920,6 +1921,12 @@
 <script>
 export default {
   name: "Home",
+  data() {
+    return {
+      name: this.$store.state.username,
+      myName: this.$store.getters['username/myName'],
+    };
+  },
 };
 </script>
 

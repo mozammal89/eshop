@@ -2219,27 +2219,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminDeshboard",
   data: function data() {
     return {
-      user: this.$store.state.test,
-      userdata: this.$store.getters.userinfo
+      name: this.$store.state.username,
+      myName: this.$store.getters['username/myName']
     };
-  },
-  methods: {
-    changeData: function changeData(data) {
-      $this.$store.dispatch("changeAbcData", data);
-    }
-  },
-  computed: {
-    abcdata: function abcdata() {
-      return this.$store.getters.abcinfo;
-    }
   }
 });
 
@@ -38693,34 +38679,9 @@ var render = function() {
               _c("h1", { staticClass: "m-0 text-dark" }, [
                 _vm._v("Dashboard v3")
               ]),
-              _vm._v(
-                "\n            User Info " + _vm._s(_vm.user) + "\n            "
-              ),
+              _vm._v("\n            " + _vm._s(_vm.name) + "\n            "),
               _c("br"),
-              _vm._v("\n            User Info2 "),
-              _c("span", { staticStyle: { color: "red" } }, [
-                _vm._v(_vm._s(_vm.userdata.name))
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  attrs: { href: "" },
-                  on: {
-                    click: function($event) {
-                      return _vm.changeData("Update")
-                    }
-                  }
-                },
-                [_vm._v(" Change Data ")]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            abc data " + _vm._s(_vm.abcdata) + "\n          "
-              )
+              _vm._v("\n            " + _vm._s(_vm.myName) + "\n          ")
             ]),
             _vm._v(" "),
             _vm._m(0)
@@ -57437,7 +57398,7 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _admin_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin/router */ "./resources/js/admin/router.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _common_store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/store/store */ "./resources/js/common/store/store.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //vue route import
@@ -57448,41 +57409,10 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 Vue.component('admin-master', __webpack_require__(/*! ./components/admin/AdminMaster.vue */ "./resources/js/components/admin/AdminMaster.vue")["default"]);
 
-Vue.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]); // this is vuex instance 
-
-var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
-  state: {
-    test: "This is test Admin",
-    abc: 'update data',
-    user: {
-      name: 'mozammal',
-      mail: 'mozammal.bubt89@gmail.com'
-    }
-  },
-  getters: {
-    userinfo: function userinfo(state) {
-      return state.user;
-    },
-    abcinfo: function abcinfo(state) {
-      return state.abc;
-    }
-  },
-  actions: {
-    changeAbcData: function changeAbcData(context, payload) {
-      context.commit('dataMutate', payload);
-    }
-  },
-  mutations: {
-    dataMutate: function dataMutate(state, payload) {
-      return state.abc = payload;
-    }
-  }
-}); //   vuex instance end 
-
 var appadmin = new Vue({
   el: '#appadmin',
   router: _admin_router__WEBPACK_IMPORTED_MODULE_1__["default"],
-  store: store,
+  store: _common_store_store__WEBPACK_IMPORTED_MODULE_2__["store"],
   data: {}
 });
 
@@ -57558,6 +57488,59 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/common/store/Moduls/user.js":
+/*!**************************************************!*\
+  !*** ./resources/js/common/store/Moduls/user.js ***!
+  \**************************************************/
+/*! exports provided: user */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "user", function() { return user; });
+var user = {
+  namespaced: true,
+  state: {
+    name: 'my name is mozammal',
+    email: 'mozammal.bubt89@gmail.com'
+  },
+  getters: {
+    myName: function myName(state) {
+      return state.name;
+    }
+  },
+  action: {},
+  mutations: {}
+};
+
+/***/ }),
+
+/***/ "./resources/js/common/store/store.js":
+/*!********************************************!*\
+  !*** ./resources/js/common/store/store.js ***!
+  \********************************************/
+/*! exports provided: store */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "store", function() { return store; });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _Moduls_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Moduls/user */ "./resources/js/common/store/Moduls/user.js");
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  modules: {
+    username: _Moduls_user__WEBPACK_IMPORTED_MODULE_2__["user"]
+  }
+});
 
 /***/ }),
 

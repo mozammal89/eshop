@@ -2797,8 +2797,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'UserRegister'
+  name: "UserRegister",
+  data: function data() {
+    return {
+      errors: {},
+      form: {}
+    };
+  },
+  methods: {
+    UserRegister: function UserRegister() {
+      var _this = this;
+
+      console.log(this.form);
+      axios.post('/register', this.form).then(function (result) {
+        console.log(result);
+      })["catch"](function (err) {
+        console.log(err);
+        _this.errors = err.response.data.errors;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -42795,7 +42848,176 @@ var render = function() {
               _c("h3", [_c("strong", [_vm._v(_vm._s(_vm.$route.name))])])
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "custom-input" }, [
+              _c(
+                "form",
+                {
+                  attrs: { action: "mail.php", method: "post" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.UserRegister()
+                    }
+                  }
+                },
+                [
+                  _vm.errors["name"]
+                    ? _c("span", { staticStyle: { color: "red" } }, [
+                        _vm._v(_vm._s(_vm.errors["name"][0]))
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.name,
+                        expression: "form.name"
+                      }
+                    ],
+                    attrs: { type: "text", placeholder: "Name here.." },
+                    domProps: { value: _vm.form.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "name", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors["email"]
+                    ? _c("span", { staticStyle: { color: "red" } }, [
+                        _vm._v(_vm._s(_vm.errors["email"][0]))
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.email,
+                        expression: "form.email"
+                      }
+                    ],
+                    attrs: { type: "mail", placeholder: "Email Address.." },
+                    domProps: { value: _vm.form.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "email", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.phone,
+                        expression: "form.phone"
+                      }
+                    ],
+                    attrs: { type: "text", placeholder: "Phone Number.." },
+                    domProps: { value: _vm.form.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "phone", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.address,
+                        expression: "form.address"
+                      }
+                    ],
+                    attrs: { type: "text", placeholder: "Address.." },
+                    domProps: { value: _vm.form.address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "address", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors["password"]
+                    ? _c("span", { staticStyle: { color: "red" } }, [
+                        _vm._v(_vm._s(_vm.errors["password"][0]))
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.password,
+                        expression: "form.password"
+                      }
+                    ],
+                    attrs: { type: "password", placeholder: "Password" },
+                    domProps: { value: _vm.form.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "password", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.password_confirmation,
+                        expression: "form.password_confirmation"
+                      }
+                    ],
+                    attrs: {
+                      type: "password",
+                      placeholder: "Confirm Password"
+                    },
+                    domProps: { value: _vm.form.password_confirmation },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form,
+                          "password_confirmation",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              )
+            ])
           ])
         ])
       ])
@@ -42807,45 +43029,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "custom-input" }, [
-      _c("form", { attrs: { action: "mail.php", method: "post" } }, [
-        _c("input", {
-          attrs: { type: "text", name: "name", placeholder: "Name here.." }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "text", name: "email", placeholder: "Email Address.." }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "text", name: "number", placeholder: "Phone Number.." }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "text", name: "address", placeholder: "Password" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: {
-            type: "password",
-            name: "password",
-            placeholder: "Confirm Password"
-          }
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "first-child" }, [
-          _c("input", {
-            attrs: { type: "radio", name: "rememberme", value: "forever" }
-          }),
-          _vm._v(
-            "\n\t\t\t\t\t\t\t\t\t\tSign up for our newsletter!\n\t\t\t\t\t\t\t\t\t"
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "submit-text coupon" }, [
-          _c("a", { attrs: { href: "my-account.html" } }, [_vm._v("Register")])
-        ])
-      ])
+    return _c("label", { staticClass: "first-child" }, [
+      _c("input", {
+        attrs: { type: "radio", name: "rememberme", value: "forever" }
+      }),
+      _vm._v("\n                Sign up for our newsletter!\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "submit-text coupon" }, [
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Register")])
     ])
   }
 ]

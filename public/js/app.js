@@ -2750,8 +2750,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'UserLogin'
+  name: "UserLogin",
+  data: function data() {
+    return {
+      form: {}
+    };
+  },
+  methods: {
+    UserLogin: function UserLogin() {
+      var _this = this;
+
+      console.log(this.form);
+      axios.post("/login", this.form).then(function (result) {
+        // console.log(result);
+        _this.$router.push({
+          name: "UserDeshboard"
+        });
+      })["catch"](function (err) {
+        console.log(err);
+        _this.errors = err.response.data.errors;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -5412,6 +5447,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PublicHeader"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/user/UserDeshboard.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/public/user/UserDeshboard.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "UserDeshboard"
 });
 
 /***/ }),
@@ -42756,65 +42809,103 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { staticClass: "pages login-page section-padding" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12" }, [
+          _c("div", { staticClass: "main-input padding60" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "login-text" }, [
+              _c("div", { staticClass: "custom-input" }, [
+                _c("p", [
+                  _vm._v("If you have an account with us, Please log in!")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    attrs: { action: "mail.php", method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.UserLogin()
+                      }
+                    }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.email,
+                          expression: "form.email"
+                        }
+                      ],
+                      attrs: { type: "email", placeholder: "Email" },
+                      domProps: { value: _vm.form.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "email", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.password,
+                          expression: "form.password"
+                        }
+                      ],
+                      attrs: { type: "password", placeholder: "Password" },
+                      domProps: { value: _vm.form.password },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "password", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("a", { staticClass: "forget", attrs: { href: "#" } }, [
+                      _vm._v("Forget your password?")
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "pages login-page section-padding" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("div", { staticClass: "main-input padding60" }, [
-              _c("div", { staticClass: "log-title" }, [
-                _c("h3", [_c("strong", [_vm._v("registered customers")])])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "login-text" }, [
-                _c("div", { staticClass: "custom-input" }, [
-                  _c("p", [
-                    _vm._v("If you have an account with us, Please log in!")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    { attrs: { action: "mail.php", method: "post" } },
-                    [
-                      _c("input", {
-                        attrs: {
-                          type: "text",
-                          name: "email",
-                          placeholder: "Email"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("input", {
-                        attrs: {
-                          type: "password",
-                          name: "password",
-                          placeholder: "Password"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("a", { staticClass: "forget", attrs: { href: "#" } }, [
-                        _vm._v("Forget your password?")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "submit-text" }, [
-                        _c("a", { attrs: { href: "my-account.html" } }, [
-                          _vm._v("login")
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "log-title" }, [
+      _c("h3", [_c("strong", [_vm._v("registered customers")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "submit-text" }, [
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Login")])
     ])
   }
 ]
@@ -48262,6 +48353,30 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/user/UserDeshboard.vue?vue&type=template&id=5882d94c&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/public/user/UserDeshboard.vue?vue&type=template&id=5882d94c&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("h2", [_vm._v("Hello test")])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -65738,6 +65853,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/public/user/UserDeshboard.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/public/user/UserDeshboard.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _UserDeshboard_vue_vue_type_template_id_5882d94c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserDeshboard.vue?vue&type=template&id=5882d94c&scoped=true& */ "./resources/js/components/public/user/UserDeshboard.vue?vue&type=template&id=5882d94c&scoped=true&");
+/* harmony import */ var _UserDeshboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserDeshboard.vue?vue&type=script&lang=js& */ "./resources/js/components/public/user/UserDeshboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UserDeshboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserDeshboard_vue_vue_type_template_id_5882d94c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _UserDeshboard_vue_vue_type_template_id_5882d94c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "5882d94c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/public/user/UserDeshboard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/public/user/UserDeshboard.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/public/user/UserDeshboard.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDeshboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./UserDeshboard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/user/UserDeshboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDeshboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/public/user/UserDeshboard.vue?vue&type=template&id=5882d94c&scoped=true&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/public/user/UserDeshboard.vue?vue&type=template&id=5882d94c&scoped=true& ***!
+  \**********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDeshboard_vue_vue_type_template_id_5882d94c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./UserDeshboard.vue?vue&type=template&id=5882d94c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/public/user/UserDeshboard.vue?vue&type=template&id=5882d94c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDeshboard_vue_vue_type_template_id_5882d94c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDeshboard_vue_vue_type_template_id_5882d94c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/public/router.js":
 /*!***************************************!*\
   !*** ./resources/js/public/router.js ***!
@@ -65751,11 +65935,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_public_home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/public/home */ "./resources/js/components/public/home.vue");
 /* harmony import */ var _components_public_auth_UserLogin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/public/auth/UserLogin */ "./resources/js/components/public/auth/UserLogin.vue");
 /* harmony import */ var _components_public_auth_UserRegister__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/public/auth/UserRegister */ "./resources/js/components/public/auth/UserRegister.vue");
+/* harmony import */ var _components_public_user_UserDeshboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/public/user/UserDeshboard */ "./resources/js/components/public/user/UserDeshboard.vue");
 //vue import from window 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //vue route import
 
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
 
 
 
@@ -65773,6 +65959,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
     path: '/register',
     component: _components_public_auth_UserRegister__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: 'UserRegister'
+  }, {
+    path: '/deshboard',
+    component: _components_public_user_UserDeshboard__WEBPACK_IMPORTED_MODULE_4__["default"],
+    name: 'UserDeshboard'
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);

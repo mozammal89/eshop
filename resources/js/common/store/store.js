@@ -7,6 +7,6 @@ import {user} from './Moduls/user'
 
 export const store = new Vuex.Store({
     modules: {
-        username: user
+        user: user
     }
   })

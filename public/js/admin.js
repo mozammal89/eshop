@@ -57501,19 +57501,32 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "user", function() { return user; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 var user = {
   namespaced: true,
   state: {
-    name: 'my name is mozammal',
-    email: 'mozammal.bubt89@gmail.com'
+    user: {}
   },
   getters: {
-    myName: function myName(state) {
-      return state.name;
+    getAuthUser: function getAuthUser(state) {
+      return state.user;
     }
   },
-  action: {},
-  mutations: {}
+  actions: {
+    getUser: function getUser(context) {
+      // context.commit('getUser')
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/user').then(function (result) {
+        context.commit('getUser', result.data);
+      })["catch"](function (err) {});
+    }
+  },
+  mutations: {
+    getUser: function getUser(state, payload) {
+      return state.user = payload;
+    }
+  }
 };
 
 /***/ }),
@@ -57538,7 +57551,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    username: _Moduls_user__WEBPACK_IMPORTED_MODULE_2__["user"]
+    user: _Moduls_user__WEBPACK_IMPORTED_MODULE_2__["user"]
   }
 });
 

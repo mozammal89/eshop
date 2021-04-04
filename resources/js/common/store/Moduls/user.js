@@ -1,22 +1,34 @@
+import Axios from "axios";
+
 export const user = {
     namespaced: true,
 
     state: {
-        name: 'my name is mozammal',
-        email: 'mozammal.bubt89@gmail.com'
+        user: {}
     },
 
     getters: {
-        myName(state){
-            return state.name
+        getAuthUser(state){
+            return state.user;
+        }
+
+    },
+
+    actions: {
+        getUser(context){
+            // context.commit('getUser')
+            Axios.get('/user')
+            .then((result) => {
+                context.commit('getUser',result.data)
+            }).catch((err) => {
+
+            })
         }
     },
 
-    action: {
-
-    },
-
     mutations: {
-
+        getUser(state,payload){
+            return state.user = payload;
+        }
     }
 }

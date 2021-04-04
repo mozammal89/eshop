@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('public.public_master');
 });
+Route::get('/user','HomeController@Userindex')->name('user.data.index');
+
+
 Route::get('admin', function () {
     return view('admin.admin_master');
 });

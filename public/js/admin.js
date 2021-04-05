@@ -57503,6 +57503,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "user", function() { return user; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var user = {
   namespaced: true,
@@ -57518,6 +57521,11 @@ var user = {
     getUser: function getUser(context) {
       // context.commit('getUser')
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/user').then(function (result) {
+        context.commit('getUser', result.data);
+      })["catch"](function (err) {});
+    },
+    userLogout: function userLogout(context) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/logout').then(function (result) {
         context.commit('getUser', result.data);
       })["catch"](function (err) {});
     }

@@ -16,6 +16,7 @@ export default {
     getUser() {
       this.$store.dispatch("user/getUser");
     },
+    
     // axios.get()
   },
   created() {

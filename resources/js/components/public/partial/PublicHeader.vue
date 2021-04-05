@@ -10,9 +10,18 @@
                   <p><i class="mdi mdi-clock"></i> Mon-Fri : 09:00-19:00</p>
                 </div>
               </div>
+              <!-- {{user}} -->
               <div class="middel-top clearfix">
                 <ul class="clearfix right floatright">
-                  <li>
+                  <li v-if="user.id">
+                    <a href="#"><i class="mdi mdi-account"></i></a>
+                    <ul>
+                      <li><router-link :to="{name : 'UserLogin'}">My account</router-link></li>
+                      <!-- user Logout method  -->
+                      <li><a @click.prevent="userLogout()">Logout</a></li>
+                    </ul>
+                  </li>
+                  <li v-else>
                     <a href="#"><i class="mdi mdi-account"></i></a>
                     <ul>
                       <li><router-link :to="{name : 'UserLogin'}">Login</router-link></li>
@@ -268,6 +277,24 @@
 <script>
 export default {
   name: "PublicHeader",
+  computed: {
+    user() {
+      return this.$store.getters["user/getAuthUser"];
+    },
+  },
+  methods: {
+    getUser() {
+      this.$store.dispatch("user/getUser");
+    },
+    userLogout() {
+      this.$store.dispatch("user/userLogout");
+      this.$router.push({name: "Home"})
+    }
+    // axios.get()
+  },
+  created() {
+    this.getUser();
+  },
 };
 </script>
 

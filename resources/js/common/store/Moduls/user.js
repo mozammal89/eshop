@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { result } from "lodash";
 
 export const user = {
     namespaced: true,
@@ -21,6 +22,15 @@ export const user = {
             .then((result) => {
                 context.commit('getUser',result.data)
             }).catch((err) => {
+
+            })
+        },
+
+        userLogout(context){
+            Axios.post('/logout')
+            .then((result) => {
+                context.commit('getUser',result.data)
+            }).catch((err)=>{
 
             })
         }

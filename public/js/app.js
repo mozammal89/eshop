@@ -5445,8 +5445,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PublicHeader"
+  name: "PublicHeader",
+  computed: {
+    user: function user() {
+      return this.$store.getters["user/getAuthUser"];
+    }
+  },
+  methods: {
+    getUser: function getUser() {
+      this.$store.dispatch("user/getUser");
+    },
+    userLogout: function userLogout() {
+      this.$store.dispatch("user/userLogout");
+      this.$router.push({
+        name: "Home"
+      });
+    } // axios.get()
+
+  },
+  created: function created() {
+    this.getUser();
+  }
 });
 
 /***/ }),
@@ -47688,49 +47717,82 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "middel-top clearfix" }, [
                 _c("ul", { staticClass: "clearfix right floatright" }, [
-                  _c("li", [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("ul", [
-                      _c(
-                        "li",
-                        [
+                  _vm.user.id
+                    ? _c("li", [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("ul", [
                           _c(
-                            "router-link",
-                            { attrs: { to: { name: "UserLogin" } } },
-                            [_vm._v("Login")]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "li",
-                        [
+                            "li",
+                            [
+                              _c(
+                                "router-link",
+                                { attrs: { to: { name: "UserLogin" } } },
+                                [_vm._v("My account")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.userLogout()
+                                  }
+                                }
+                              },
+                              [_vm._v("Logout")]
+                            )
+                          ])
+                        ])
+                      ])
+                    : _c("li", [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("ul", [
                           _c(
-                            "router-link",
-                            { attrs: { to: { name: "UserRegister" } } },
-                            [_vm._v("Registar")]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm._m(2)
-                    ])
-                  ]),
+                            "li",
+                            [
+                              _c(
+                                "router-link",
+                                { attrs: { to: { name: "UserLogin" } } },
+                                [_vm._v("Login")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            [
+                              _c(
+                                "router-link",
+                                { attrs: { to: { name: "UserRegister" } } },
+                                [_vm._v("Registar")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._m(3)
+                        ])
+                      ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(4)
                 ]),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm._m(5)
               ])
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(5)
+      _vm._m(6)
     ])
   ])
 }
@@ -47746,6 +47808,14 @@ var staticRenderFns = [
           _vm._v(" Mon-Fri : 09:00-19:00")
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "mdi mdi-account" })
     ])
   },
   function() {
@@ -65073,6 +65143,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "user", function() { return user; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var user = {
   namespaced: true,
@@ -65088,6 +65161,11 @@ var user = {
     getUser: function getUser(context) {
       // context.commit('getUser')
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/user').then(function (result) {
+        context.commit('getUser', result.data);
+      })["catch"](function (err) {});
+    },
+    userLogout: function userLogout(context) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/logout').then(function (result) {
         context.commit('getUser', result.data);
       })["catch"](function (err) {});
     }

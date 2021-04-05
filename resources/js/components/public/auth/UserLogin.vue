@@ -10,7 +10,7 @@
             <div class="login-text">
               <div class="custom-input">
                 <p>If you have an account with us, Please log in!</p>
-                
+
                 <form
                   action="mail.php"
                   method="post"
@@ -57,6 +57,11 @@ export default {
         .then((result) => {
           // console.log(result);
           this.$router.push({ name: "UserDeshboard" });
+          this.$message({
+            showClose: true,
+            message: "User Login Successfully...",
+            type: "success",
+          });
         })
         .catch((err) => {
           console.log(err);

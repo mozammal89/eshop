@@ -16,7 +16,11 @@
                   <li v-if="user.id">
                     <a href="#"><i class="mdi mdi-account"></i></a>
                     <ul>
-                      <li><router-link :to="{name : 'UserLogin'}">My account</router-link></li>
+                      <li>
+                        <router-link :to="{ name: 'UserLogin' }"
+                          >My account</router-link
+                        >
+                      </li>
                       <!-- user Logout method  -->
                       <li><a @click.prevent="userLogout()">Logout</a></li>
                     </ul>
@@ -24,8 +28,16 @@
                   <li v-else>
                     <a href="#"><i class="mdi mdi-account"></i></a>
                     <ul>
-                      <li><router-link :to="{name : 'UserLogin'}">Login</router-link></li>
-                      <li><router-link :to="{name : 'UserRegister'}">Registar</router-link></li>
+                      <li>
+                        <router-link :to="{ name: 'UserLogin' }"
+                          >Login</router-link
+                        >
+                      </li>
+                      <li>
+                        <router-link :to="{ name: 'UserRegister' }"
+                          >Registar</router-link
+                        >
+                      </li>
                       <li><a href="my-account.html">My account</a></li>
                     </ul>
                   </li>
@@ -288,8 +300,13 @@ export default {
     },
     userLogout() {
       this.$store.dispatch("user/userLogout");
-      this.$router.push({name: "Home"})
-    }
+      this.$router.push({ name: "Home" });
+      this.$message({
+        showClose: true,
+        message: "User Logout Successfully...",
+        type: "success",
+      });
+    },
     // axios.get()
   },
   created() {

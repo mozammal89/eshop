@@ -28,6 +28,8 @@ Route::get('/', function () {
 Route::get('admin', function () {
     return view('admin.admin_master');
 });
+
+
 Route::get('public', function () {
     return view('public.public_master');
 });

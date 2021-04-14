@@ -3561,6 +3561,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -103861,15 +103863,15 @@ var render = function() {
       "div",
       { staticClass: "wrapper" },
       [
-        _c("admin-header"),
-        _vm._v(" "),
-        _c("admin-sidebar"),
+        _vm.$route.name !== "AdminLogin"
+          ? [_c("admin-header"), _vm._v(" "), _c("admin-sidebar")]
+          : _vm._e(),
         _vm._v(" "),
         _c("router-view"),
         _vm._v(" "),
-        _c("admin-footer")
+        _vm.$route.name !== "AdminLogin" ? _c("admin-footer") : _vm._e()
       ],
-      1
+      2
     )
   ])
 }

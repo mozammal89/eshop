@@ -14,13 +14,27 @@ import UserDeshboard from '../components/public/user/UserDeshboard'
 const router = new VueRouter({
   mode: 'history',
 
-  routes :[
-  	{ path: '/', component: Home, name:'Home' },
-  	{ path: '/login', component: UserLogin, name:'UserLogin' },
-  	{ path: '/register', component: UserRegister, name:'UserRegister' },
-    { path: '/user/deshboard', component: UserDeshboard, name:'UserDeshboard' },
+  routes: [
+    { path: '/', component: Home, name: 'Home' },
+    { 
+      path: '/login', component: UserLogin, name: 'UserLogin' ,
+      beforeEnter: (to, from, next) => {
+        const isAuthenticated = localStorage.getItem('userLoggedIn') ? true : false ;
+        if (to.name == 'UserLogin' && isAuthenticated) next({ name: 'UserDeshboard' })
+        else next();
+      }
+    },
+    { path: '/register', component: UserRegister, name: 'UserRegister' },
+    {
+      path: '/user/deshboard', component: UserDeshboard, name: 'UserDeshboard',
+      beforeEnter: (to, from, next) => {
+        const isAuthenticated = localStorage.getItem('userLoggedIn') ? true : false ;
+        if (to.name !== 'UserLogin' && !isAuthenticated) next({ name: 'UserLogin' })
+        else next();
+      }
+    },
   ]
 })
 
 
-export default router ;
+export default router;

@@ -4406,6 +4406,8 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.form);
       axios.post("/login", this.form).then(function (result) {
         // console.log(result);
+        localStorage.setItem('userLoggedIn', true);
+
         _this.$router.push({
           name: "UserDeshboard"
         });
@@ -7109,6 +7111,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PublicHeader",
   computed: {
@@ -7122,6 +7128,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     userLogout: function userLogout() {
       this.$store.dispatch("user/userLogout");
+      localStorage.removeItem('userLoggedIn');
       this.$router.push({
         name: "Home"
       });
@@ -110451,21 +110458,31 @@ var render = function() {
                             1
                           ),
                           _vm._v(" "),
-                          _vm._m(3)
+                          _c(
+                            "li",
+                            [
+                              _c(
+                                "router-link",
+                                { attrs: { to: { name: "UserDeshboard" } } },
+                                [_vm._v("My account")]
+                              )
+                            ],
+                            1
+                          )
                         ])
                       ]),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(3)
                 ]),
                 _vm._v(" "),
-                _vm._m(5)
+                _vm._m(4)
               ])
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(6)
+      _vm._m(5)
     ])
   ])
 }
@@ -110497,14 +110514,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "#" } }, [
       _c("i", { staticClass: "mdi mdi-account" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "my-account.html" } }, [_vm._v("My account")])
     ])
   },
   function() {
@@ -128750,7 +128759,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   }, {
     path: '/login',
     component: _components_public_auth_UserLogin__WEBPACK_IMPORTED_MODULE_2__["default"],
-    name: 'UserLogin'
+    name: 'UserLogin',
+    beforeEnter: function beforeEnter(to, from, next) {
+      var isAuthenticated = localStorage.getItem('userLoggedIn') ? true : false;
+      if (to.name == 'UserLogin' && isAuthenticated) next({
+        name: 'UserDeshboard'
+      });else next();
+    }
   }, {
     path: '/register',
     component: _components_public_auth_UserRegister__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -128758,7 +128773,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   }, {
     path: '/user/deshboard',
     component: _components_public_user_UserDeshboard__WEBPACK_IMPORTED_MODULE_4__["default"],
-    name: 'UserDeshboard'
+    name: 'UserDeshboard',
+    beforeEnter: function beforeEnter(to, from, next) {
+      var isAuthenticated = localStorage.getItem('userLoggedIn') ? true : false;
+      if (to.name !== 'UserLogin' && !isAuthenticated) next({
+        name: 'UserLogin'
+      });else next();
+    }
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);

@@ -38,7 +38,11 @@
                           >Registar</router-link
                         >
                       </li>
-                      <li><a href="my-account.html">My account</a></li>
+                      <li>
+                        <router-link :to="{ name: 'UserDeshboard' }"
+                          >My account</router-link
+                        >
+                      </li>
                     </ul>
                   </li>
                   <li>
@@ -300,6 +304,7 @@ export default {
     },
     userLogout() {
       this.$store.dispatch("user/userLogout");
+      localStorage.removeItem('userLoggedIn');
       this.$router.push({ name: "Home" });
       this.$message({
         showClose: true,

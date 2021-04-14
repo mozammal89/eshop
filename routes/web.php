@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::prefix('admin')->group(base_path('routes/admin.php'));
+Route::prefix('user')->group(base_path('routes/public.php'));
+
+
+
 Route::get('/', function () {
     return view('public.public_master');
 });
-Route::get('/user','HomeController@Userindex')->name('user.data.index');
+// Route::get('/user','HomeController@Userindex')->name('user.data.index');
 
 
 Route::get('admin', function () {
@@ -27,11 +33,13 @@ Route::get('public', function () {
 });
 
 
-Route::prefix('admin')->group(base_path('routes/admin.php'));
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/login', 'HomeController@index')->name('login');
+Route::get('/register', 'HomeController@index')->name('register');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
 

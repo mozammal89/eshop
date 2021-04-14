@@ -128756,7 +128756,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
     component: _components_public_auth_UserRegister__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: 'UserRegister'
   }, {
-    path: '/deshboard',
+    path: '/user/deshboard',
     component: _components_public_user_UserDeshboard__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'UserDeshboard'
   }]

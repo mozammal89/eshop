@@ -25,9 +25,7 @@ Route::get('/', function () {
 // Route::get('/user','HomeController@Userindex')->name('user.data.index');
 
 
-Route::get('admin', function () {
-    return view('admin.admin_master');
-});
+
 
 
 Route::get('public', function () {

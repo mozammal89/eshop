@@ -17,14 +17,16 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img
+            <!-- <img
               src="dist/img/user2-160x160.jpg"
               class="img-circle elevation-2"
               alt="User Image"
-            />
+            /> -->
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block">{{admin.name}}</a>
+            
+            
           </div>
         </div>
 
@@ -81,7 +83,18 @@ export default {
         });
       // alert('test');
     },
+    getAuthUser(){
+      this.$store.dispatch('admin/getUser');
+    }
   },
+  computed:{
+      admin() {
+        return this.$store.getters["admin/getAuthUser"];
+    },
+    },
+    created(){
+      this.getAuthUser();
+    }
 };
 </script>
 <style scoped>

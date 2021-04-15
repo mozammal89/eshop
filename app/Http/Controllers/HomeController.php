@@ -37,4 +37,8 @@ class HomeController extends Controller
     public function Userindex(){
         return Auth::user();
     }
+
+    public function Adminindex(){
+        return Auth::guard('admin')->user();
+    }
 }

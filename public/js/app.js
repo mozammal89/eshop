@@ -3820,6 +3820,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdminHeader",
   methods: {
@@ -3833,7 +3835,18 @@ __webpack_require__.r(__webpack_exports__);
           name: 'AdminLogin'
         });
       })["catch"](function (err) {}); // alert('test');
+    },
+    getAuthUser: function getAuthUser() {
+      this.$store.dispatch('admin/getUser');
     }
+  },
+  computed: {
+    admin: function admin() {
+      return this.$store.getters["admin/getAuthUser"];
+    }
+  },
+  created: function created() {
+    this.getAuthUser();
   }
 });
 
@@ -103840,7 +103853,15 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "sidebar" }, [
-          _vm._m(1),
+          _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
+            _c("div", { staticClass: "image" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "info" }, [
+              _c("a", { staticClass: "d-block", attrs: { href: "#" } }, [
+                _vm._v(_vm._s(_vm.admin.name))
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c("nav", { staticClass: "mt-2" }, [
             _c(
@@ -103854,7 +103875,7 @@ var render = function() {
                 }
               },
               [
-                _vm._m(2),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("li", { staticClass: "nav-item has-treeview menu-open" }, [
                   _c(
@@ -103874,7 +103895,7 @@ var render = function() {
                         staticClass: "nav-icon fas fa-tachometer-alt"
                       }),
                       _vm._v(" "),
-                      _vm._m(3)
+                      _vm._m(2)
                     ]
                   )
                 ])
@@ -103906,25 +103927,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
-      _c("div", { staticClass: "image" }, [
-        _c("img", {
-          staticClass: "img-circle elevation-2",
-          attrs: { src: "dist/img/user2-160x160.jpg", alt: "User Image" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "info" }, [
-        _c("a", { staticClass: "d-block", attrs: { href: "#" } }, [
-          _vm._v("Alexander Pierce")
-        ])
-      ])
-    ])
   },
   function() {
     var _vm = this
@@ -126298,6 +126300,49 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/common/store/Moduls/admin.js":
+/*!***************************************************!*\
+  !*** ./resources/js/common/store/Moduls/admin.js ***!
+  \***************************************************/
+/*! exports provided: admin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "admin", function() { return admin; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var admin = {
+  namespaced: true,
+  state: {
+    admin: {}
+  },
+  getters: {
+    getAuthUser: function getAuthUser(state) {
+      return state.admin;
+    }
+  },
+  actions: {
+    getUser: function getUser(context) {
+      // context.commit('getUser')
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/admin/data').then(function (result) {
+        context.commit('getUser', result.data);
+      })["catch"](function (err) {});
+    }
+  },
+  mutations: {
+    getUser: function getUser(state, payload) {
+      return state.admin = payload;
+    }
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/common/store/Moduls/user.js":
 /*!**************************************************!*\
   !*** ./resources/js/common/store/Moduls/user.js ***!
@@ -126360,13 +126405,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Moduls_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Moduls/user */ "./resources/js/common/store/Moduls/user.js");
+/* harmony import */ var _Moduls_admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Moduls/admin */ "./resources/js/common/store/Moduls/admin.js");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
+
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    user: _Moduls_user__WEBPACK_IMPORTED_MODULE_2__["user"]
+    user: _Moduls_user__WEBPACK_IMPORTED_MODULE_2__["user"],
+    admin: _Moduls_admin__WEBPACK_IMPORTED_MODULE_3__["admin"]
   }
 });
 

@@ -11,6 +11,8 @@ Route::group(['middleware' => 'auth:admin'], function(){
         return view('admin.admin_master');
     })->name('admin.deshboard');
 
+    Route::get('/data','HomeController@Adminindex')->name('admin.data.index');
+
     Route::get('/logout','Admin\LoginController@logout')->name('admin.logout');
 });
 

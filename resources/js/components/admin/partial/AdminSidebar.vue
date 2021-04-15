@@ -26,7 +26,7 @@
           <div class="info">
             <a href="#" class="d-block">{{admin.name}}</a>
             
-            
+            <!-- {{admin}} -->
           </div>
         </div>
 
@@ -41,20 +41,58 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link active">
+              <router-link :to="{name:'AdminDeshboard'}" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
-                  <i class="right fas fa-angle-left"></i>
                 </p>
-              </a>
+              </router-link>
+            </li>
+            <li class="nav-item has-treeview menu-open">
+              <router-link :to="{name:'CategoryList'}" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Category
+                </p>
+              </router-link>
+            </li>
+            <li class="nav-item has-treeview menu-open">
+              <router-link :to="{name:'BrandList'}" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Brand
+                </p>
+              </router-link>
+            </li>
+            <li class="nav-item has-treeview menu-open">
+              <router-link :to="{name:'ProductList'}" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Products
+                </p>
+              </router-link>
+            </li>
+            <li class="nav-item has-treeview menu-open">
+              <router-link :to="{name:'CustomerList'}" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Customers
+                </p>
+              </router-link>
+            </li>
+            <li class="nav-item has-treeview menu-open">
+              <router-link :to="{name:'OrderList'}" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Orders
+                </p>
+              </router-link>
             </li>
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link" @click.prevent="logout()">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Logout
-                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
             </li>

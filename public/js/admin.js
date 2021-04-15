@@ -56203,27 +56203,48 @@ var appadmin = new Vue({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _components_admin_AdminDeshboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/admin/AdminDeshboard */ "./resources/js/components/admin/AdminDeshboard.vue");
-/* harmony import */ var _components_admin_auth_AdminLogin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/admin/auth/AdminLogin */ "./resources/js/components/admin/auth/AdminLogin.vue");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _components_admin_AdminDeshboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/admin/AdminDeshboard */ "./resources/js/components/admin/AdminDeshboard.vue");
+/* harmony import */ var _components_admin_auth_AdminLogin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/admin/auth/AdminLogin */ "./resources/js/components/admin/auth/AdminLogin.vue");
 //vue import from window 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //vue route import
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+ //vue route import
 
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
     path: '/admin',
-    component: _components_admin_AdminDeshboard__WEBPACK_IMPORTED_MODULE_1__["default"],
+    component: _components_admin_AdminDeshboard__WEBPACK_IMPORTED_MODULE_2__["default"],
     name: 'AdminDeshboard'
   }, {
     path: '/admin/login',
-    component: _components_admin_auth_AdminLogin__WEBPACK_IMPORTED_MODULE_2__["default"],
+    component: _components_admin_auth_AdminLogin__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: 'AdminLogin'
   }]
+});
+router.beforeEach(function (to, from, next) {
+  var isAuthenticated = '';
+  var authUser = localStorage.getItem('AdminLogidIn') ? JSON.parse(localStorage.getItem('AdminLogidIn')) : false;
+
+  if (authUser) {
+    isAuthenticated = authUser.id && authUser.email ? true : false;
+  } else {
+    isAuthenticated = false;
+  }
+
+  if (to.name !== 'AdminLogin' && !isAuthenticated) next({
+    name: 'AdminLogin'
+  });else if (to.name === 'AdminLogin' && isAuthenticated) {
+    next({
+      name: 'AdminDeshboard'
+    });
+  } else next();
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 

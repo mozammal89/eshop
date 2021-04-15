@@ -2,6 +2,7 @@
 
 window.Vue = require('vue');
 
+import { join } from 'lodash';
 //vue route import
 import VueRouter from 'vue-router'
 
@@ -13,10 +14,29 @@ import AdminLogin from '../components/admin/auth/AdminLogin'
 const router = new VueRouter({
   mode: 'history',
 
-  routes :[
-  	{ path: '/admin', component: AdminDeshboard, name: 'AdminDeshboard' },
-  	{ path: '/admin/login', component: AdminLogin, name: 'AdminLogin' },
+  routes: [
+    { path: '/admin', component: AdminDeshboard, name: 'AdminDeshboard' },
+    { path: '/admin/login', component: AdminLogin, name: 'AdminLogin' },
   ]
 })
 
-export default router ;
+
+
+router.beforeEach((to, from, next) => {
+  let isAuthenticated = '';
+  let authUser = localStorage.getItem('AdminLogidIn') ? JSON.parse(localStorage.getItem('AdminLogidIn')) : false;
+
+  if(authUser){
+    isAuthenticated = authUser.id && authUser.email ? true : false;
+  }else{
+    isAuthenticated = false;
+  }
+
+  if (to.name !== 'AdminLogin' && !isAuthenticated) next({ name: 'AdminLogin' })
+  else if (to.name === 'AdminLogin' && isAuthenticated){
+    next({ name: 'AdminDeshboard' });
+  }
+  else next()
+})
+
+export default router;

@@ -41,7 +41,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
-              <router-link :to="{name:'AdminDeshboard'}" class="nav-link active">
+              <router-link :to="{name:'AdminDeshboard'}" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard

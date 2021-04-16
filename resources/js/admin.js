@@ -17,6 +17,7 @@ Vue.component('admin-master', require('./components/admin/AdminMaster.vue').defa
 
 import {store} from './common/store/store'
 
+import libary from './common/libary'
 
 const appadmin = new Vue({
     el: '#appadmin',

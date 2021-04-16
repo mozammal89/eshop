@@ -116,9 +116,6 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    handleClick() {
-        console.log('click');
-      }
   },
 };
 </script>

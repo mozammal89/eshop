@@ -103920,7 +103920,7 @@ var render = function() {
                     _c(
                       "router-link",
                       {
-                        staticClass: "nav-link active",
+                        staticClass: "nav-link",
                         attrs: { to: { name: "AdminDeshboard" } }
                       },
                       [
@@ -126378,12 +126378,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _public_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./public/router */ "./resources/js/public/router.js");
 /* harmony import */ var _common_store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/store/store */ "./resources/js/common/store/store.js");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! element-ui */ "./node_modules/element-ui/lib/element-ui.common.js");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! element-ui/lib/locale/lang/en */ "./node_modules/element-ui/lib/locale/lang/en.js");
-/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! element-ui/lib/theme-chalk/index.css */ "./node_modules/element-ui/lib/theme-chalk/index.css");
-/* harmony import */ var element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _common_libary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/libary */ "./resources/js/common/libary.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //vue import from window 
 
 
@@ -126397,11 +126392,6 @@ Vue.component('public-master', __webpack_require__(/*! ./components/public/Publi
 Vue.component('admin-master', __webpack_require__(/*! ./components/admin/AdminMaster.vue */ "./resources/js/components/admin/AdminMaster.vue")["default"]);
 
 
-
-
-Vue.use(element_ui__WEBPACK_IMPORTED_MODULE_3___default.a, {
-  locale: element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_4___default.a
-});
 var app = new Vue({
   el: '#app',
   router: _public_router__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -126455,6 +126445,33 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/common/libary.js":
+/*!***************************************!*\
+  !*** ./resources/js/common/libary.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! element-ui */ "./node_modules/element-ui/lib/element-ui.common.js");
+/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! element-ui/lib/locale/lang/en */ "./node_modules/element-ui/lib/locale/lang/en.js");
+/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! element-ui/lib/theme-chalk/index.css */ "./node_modules/element-ui/lib/theme-chalk/index.css");
+/* harmony import */ var element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(element_ui__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  locale: element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_2___default.a
+});
 
 /***/ }),
 

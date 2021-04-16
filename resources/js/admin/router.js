@@ -21,7 +21,7 @@ const router = new VueRouter({
   linkActiveClass: 'active',
 
   routes: [
-    { path: '/admin', component: AdminDeshboard, name: 'AdminDeshboard' },
+    { path: '/admin/deshboard', component: AdminDeshboard, name: 'AdminDeshboard' },
     { path: '/admin/login', component: AdminLogin, name: 'AdminLogin' },
     { path: '/admin/categories', component: CategoryList, name: 'CategoryList' },
     { path: '/admin/brands', component: BrandList, name: 'BrandList' },

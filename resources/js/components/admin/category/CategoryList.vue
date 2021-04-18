@@ -9,6 +9,7 @@
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">Category List</h3>
+                  <!-- {{categories}} -->
                   <el-button type="primary" round
                     >Add New <i class="el-icon-plus"></i
                   ></el-button>
@@ -16,23 +17,18 @@
               </div>
               <el-table
                 ref="multipleTable"
-                :data="tableData"
+                :data="categories.data"
                 style="width: 100%"
                 @selection-change="handleSelectionChange"
               >
                 <el-table-column type="selection" width="55"> </el-table-column>
                 <el-table-column label="Date" width="120">
-                  <template slot-scope="scope">{{ scope.row.date }}</template>
+                  <template slot-scope="scope">{{ scope.row.created_at | timeFormet }}</template>
                 </el-table-column>
                 <el-table-column property="name" label="Name" width="120">
                 </el-table-column>
-                <el-table-column
-                  property="address"
-                  label="Address"
-                  show-overflow-tooltip
-                >
-                </el-table-column>
-                <el-table-column fixed="right" label="Operations" width="150">
+                
+                <el-table-column  label="Action" width="150">
                   <template >
                     <el-button @click="handleClick" type="text" size="small"
                       >Detail</el-button
@@ -118,8 +114,20 @@ export default {
     },
     handleClick() {
         console.log('click');
-      }
+      },
+      categoryList() {
+      this.$store.dispatch("category/categoryList");
+    },
   },
+  created() {
+    this.categoryList();
+  },
+
+  computed:{
+    categories(){
+      return this.$store.getters['category/categoryList']
+    }
+  }
 };
 </script>
 

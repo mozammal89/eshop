@@ -14,9 +14,12 @@ Route::group(['middleware' => 'auth:admin'], function(){
     Route::get('/data','HomeController@Adminindex')->name('admin.data.index');
 
     Route::get('/logout','Admin\LoginController@logout')->name('admin.logout');
+
+    // Category Controller 
+    Route::resource('category','CategoryController');
 });
 
-
+// Route::get('all/cate','CategoryController@index');
 
 Route::get('test',function(){
 	return 'ok';

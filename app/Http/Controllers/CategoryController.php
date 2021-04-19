@@ -86,6 +86,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id)->delete();
+        return $this->index();
     }
+
+    // public function categoryDestroy($id)
+    // {
+    //     // dd($id);
+    //     $category = Category::find($id)->delete();
+    //     return $this->index();
+    // }
 }

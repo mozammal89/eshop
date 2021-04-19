@@ -17,9 +17,11 @@ Route::group(['middleware' => 'auth:admin'], function(){
 
     // Category Controller 
     Route::resource('category','CategoryController');
+
+    // Route::get('/categoryDelete/{id}','CategoryController@categoryDestroy');
 });
 
-// Route::get('all/cate','CategoryController@index');
+
 
 Route::get('test',function(){
 	return 'ok';

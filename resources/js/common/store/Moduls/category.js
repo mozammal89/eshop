@@ -24,7 +24,12 @@ export const category = {
             }).catch((err)=>{
 
             })
-            
+        },
+        deleteCategory(context, payload){
+            Axios.delete('/admin/category/'+payload)
+            .then((res)=>{
+            context.commit('categoryList',res.data.categories);
+            })
         }
     },
 

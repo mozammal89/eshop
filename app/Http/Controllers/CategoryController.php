@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         //category list get 
-        $categories = Category::paginate(10);
+        $categories = Category::latest()->paginate(10);
         
         return Response::json([
             'categories' => $categories,
@@ -41,7 +41,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required'
+        ]);
+        
+        $category = new Category;
+        $category->name = $request->name;
+        $category->save();
+
+
+        // Category::create($request->all());
     }
 
     /**

@@ -30,7 +30,7 @@ export const category = {
             .then((res)=>{
             context.commit('categoryList',res.data.categories);
             })
-        }
+        },
     },
 
     mutations: {

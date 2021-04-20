@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">Category List</h3>
                   <!-- {{categories}} -->
-                  <el-button type="primary" round
+                  <el-button type="primary" @click="categoryDialog=true" round
                     >Add New <i class="el-icon-plus"></i
                   ></el-button>
                 </div>
@@ -50,6 +50,27 @@
         </div>
       </div>
     </div>
+    <el-dialog
+      title="Add New Category"
+      :visible.sync="categoryDialog"
+      width="50%"
+      center>
+      <span>
+        <el-form  label-width="120px" @submit.prevent="addNewCategory()">
+          <el-form-item label="Category name">
+            <el-input v-model="form.name" placeholder="Enter Category Name"></el-input>
+            <span class="text-danger" v-if="errors['name']">
+              {{errors['name'][0]}}
+            </span>
+          </el-form-item>
+        </el-form>
+
+      </span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="categoryDialog = false">Cancel</el-button>
+        <el-button type="primary" @click="addNewCategory()">Save</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -59,6 +80,13 @@ export default {
   data() {
     return {
       multipleSelection: [],
+      categoryDialog: false,
+      form:{
+        name: ''
+      },
+      errors:{
+
+      }
     };
   },
 
@@ -87,6 +115,24 @@ export default {
             message: "Category Delete Successfully...",
             type: "success",
           });
+    },
+    addNewCategory(){
+      axios.post('/admin/category', this.form)
+      .then((res)=>{
+        categoryDialog: false;
+        this.$message({
+            message: "Category Added Successfully...",
+            type: "success",
+          });
+          this.clearData();
+          
+          this.categoryList();
+      }).catch((err)=>{
+          this.errors = err.response.data.errors
+      })
+    },
+    clearData(){
+      this.errors = {}
     }
   },
   created() {

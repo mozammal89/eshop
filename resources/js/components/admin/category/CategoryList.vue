@@ -23,23 +23,39 @@
               >
                 <el-table-column type="selection" width="55"> </el-table-column>
                 <el-table-column label="Date" width="120">
-                  <template slot-scope="scope">{{ scope.row.created_at | timeFormet }}</template>
+                  <template slot-scope="scope">{{
+                    scope.row.created_at | timeFormet
+                  }}</template>
                 </el-table-column>
                 <el-table-column property="name" label="Name" width="120">
                 </el-table-column>
-                
-                <el-table-column  label="Action" width="150">
+
+                <el-table-column label="Action" width="150">
                   <template slot-scope="scope">
-                    <el-button type="text" size="small" @click.prevent="editCategory(scope.row)">Edit</el-button>
-                    <el-button @click="deleteCategory(scope.row.id)" type="text" size="small">Delete</el-button>
+                    <el-button
+                      type="text"
+                      size="small"
+                      @click.prevent="editCategory(scope.row)"
+                      >Edit</el-button
+                    >
+                    <el-button
+                      @click="deleteCategory(scope.row.id)"
+                      type="text"
+                      size="small"
+                      >Delete</el-button
+                    >
                   </template>
                 </el-table-column>
               </el-table>
+              <!-- {{categories}} -->
               <el-pagination
                 class="text-center"
                 background
+                @current-change="handleCurrentChange"
+                :current-page.sync="currentPage"
+                :page-size="categories.per_page"
                 layout="prev, pager, next"
-                :total="1000"
+                :total="categories.total"
               >
               </el-pagination>
             </div>
@@ -51,22 +67,29 @@
       :title="form.id ? 'Edit Category' : 'Add New Category'"
       :visible.sync="categoryDialog"
       width="50%"
-      center>
+      center
+    >
       <span>
-        <el-form  label-width="120px" @submit.prevent="addNewCategory()">
+        <el-form label-width="120px" @submit.prevent="addNewCategory()">
           <el-form-item label="Category name">
-            <el-input v-model="form.name" placeholder="Enter Category Name"></el-input>
+            <el-input
+              v-model="form.name"
+              placeholder="Enter Category Name"
+            ></el-input>
             <span class="text-danger" v-if="errors['name']">
-              {{errors['name'][0]}}
+              {{ errors["name"][0] }}
             </span>
           </el-form-item>
         </el-form>
-
       </span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="categoryDialogClose()">Cancel</el-button>
-        <el-button type="primary" v-if="(!(form.id))" @click="addNewCategory()" >Save</el-button>
-        <el-button type="primary" v-else @click="updateCategory()" >Update</el-button>
+        <el-button type="primary" v-if="!form.id" @click="addNewCategory()"
+          >Save</el-button
+        >
+        <el-button type="primary" v-else @click="updateCategory()"
+          >Update</el-button
+        >
       </span>
     </el-dialog>
   </div>
@@ -77,24 +100,27 @@ export default {
   name: "CategoryList",
   data() {
     return {
+      currentPage : 1,
       multipleSelection: [],
       categoryDialog: false,
-      form:{
-        name: ''
+      form: {
+        name: "",
       },
-      errors:{
-
-      }
+      errors: {},
     };
   },
 
   methods: {
-    categoryAddNew(){
-      this.categoryDialog = true
+    handleCurrentChange(){
+      this.$store.dispatch("category/categoryList",this.currentPage);
+      // console.log(this.currentPage)
+    },
+    categoryAddNew() {
+      this.categoryDialog = true;
       this.clearData();
     },
-    categoryDialogClose(){
-      this.categoryDialog = false
+    categoryDialogClose() {
+      this.categoryDialog = false;
       this.categoryList();
       this.clearData();
     },
@@ -110,65 +136,67 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-      categoryList() {
-      this.$store.dispatch("category/categoryList");
+    categoryList() {
+      this.$store.dispatch("category/categoryList",this.currentPage);
     },
-    deleteCategory(id){
-      this.$store.dispatch("category/deleteCategory",id);
+    deleteCategory(id) {
+      this.$store.dispatch("category/deleteCategory", id);
       this.$message({
-            message: "Category Delete Successfully...",
-            type: "success",
-          });
+        message: "Category Delete Successfully...",
+        type: "success",
+      });
     },
-    addNewCategory(){
-      axios.post('/admin/category', this.form)
-      .then((res)=>{
-        
-        this.$message({
+    addNewCategory() {
+      axios
+        .post("/admin/category", this.form)
+        .then((res) => {
+          this.$message({
             message: "Category Added Successfully...",
             type: "success",
           });
           this.clearData();
           this.categoryList();
-          this.categoryDialog = false
-      }).catch((err)=>{
-          this.errors = err.response.data.errors
-      })
+          this.categoryDialog = false;
+        })
+        .catch((err) => {
+          this.errors = err.response.data.errors;
+        });
     },
-    editCategory(category){
-      this.categoryDialog = true
-      this.form = category
+    editCategory(category) {
+      this.categoryDialog = true;
+      this.form = category;
     },
-    updateCategory(){
-      axios.put('/admin/category/'+this.form.id, this.form)
-      .then((res)=>{
-        
-        this.$message({
+    updateCategory() {
+      axios
+        .put("/admin/category/" + this.form.id, this.form)
+        .then((res) => {
+          this.$message({
             message: "Category Update Successfully...",
             type: "success",
           });
           this.clearData();
           this.categoryList();
-          this.categoryDialog = false
-      }).catch((err)=>{
-          this.errors = err.response.data.errors
-      })
+          this.categoryDialog = false;
+        })
+        .catch((err) => {
+          this.errors = err.response.data.errors;
+        });
     },
 
-    clearData(){
-      this.errors = {}
-      this.form = {}
-    }
+    clearData() {
+      this.errors = {};
+      this.form = {};
+    },
   },
   created() {
     this.categoryList();
   },
 
-  computed:{
-    categories(){
-      return this.$store.getters['category/categoryList']
-    }
-  }
+  computed: {
+    categories() {
+      return this.$store.getters["category/categoryList"];
+    },
+  },
 };
 </script>
 

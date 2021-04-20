@@ -16,8 +16,8 @@ export const category = {
     },
 
     actions: {
-        categoryList(context){
-            Axios.get('/admin/category')
+        categoryList(context,payload){
+            Axios.get('/admin/category?page='+payload)
             .then((res)=>{
                 // console.log(res.data.categories);
                 context.commit('categoryList',res.data.categories)

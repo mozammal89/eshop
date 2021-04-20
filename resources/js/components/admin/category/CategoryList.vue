@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-between">
                   <h3 class="card-title">Category List</h3>
                   <!-- {{categories}} -->
-                  <el-button type="primary" @click="categoryDialog=true" round
+                  <el-button type="primary" @click="categoryAddNew()" round
                     >Add New <i class="el-icon-plus"></i
                   ></el-button>
                 </div>
@@ -30,10 +30,7 @@
                 
                 <el-table-column  label="Action" width="150">
                   <template slot-scope="scope">
-                    <el-button @click="handleClick" type="text" size="small"
-                      >Detail</el-button
-                    >
-                    <el-button type="text" size="small">Edit</el-button>
+                    <el-button type="text" size="small" @click.prevent="editCategory(scope.row)">Edit</el-button>
                     <el-button @click="deleteCategory(scope.row.id)" type="text" size="small">Delete</el-button>
                   </template>
                 </el-table-column>
@@ -51,7 +48,7 @@
       </div>
     </div>
     <el-dialog
-      title="Add New Category"
+      :title="form.id ? 'Edit Category' : 'Add New Category'"
       :visible.sync="categoryDialog"
       width="50%"
       center>
@@ -67,8 +64,9 @@
 
       </span>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="categoryDialog = false">Cancel</el-button>
-        <el-button type="primary" @click="addNewCategory()">Save</el-button>
+        <el-button @click="categoryDialogClose()">Cancel</el-button>
+        <el-button type="primary" v-if="(!(form.id))" @click="addNewCategory()" >Save</el-button>
+        <el-button type="primary" v-else @click="updateCategory()" >Update</el-button>
       </span>
     </el-dialog>
   </div>
@@ -91,6 +89,15 @@ export default {
   },
 
   methods: {
+    categoryAddNew(){
+      this.categoryDialog = true
+      this.clearData();
+    },
+    categoryDialogClose(){
+      this.categoryDialog = false
+      this.categoryList();
+      this.clearData();
+    },
     toggleSelection(rows) {
       if (rows) {
         rows.forEach((row) => {
@@ -103,9 +110,6 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    handleClick() {
-        console.log('click');
-      },
       categoryList() {
       this.$store.dispatch("category/categoryList");
     },
@@ -119,20 +123,41 @@ export default {
     addNewCategory(){
       axios.post('/admin/category', this.form)
       .then((res)=>{
-        categoryDialog: false;
+        
         this.$message({
             message: "Category Added Successfully...",
             type: "success",
           });
           this.clearData();
-          
           this.categoryList();
+          this.categoryDialog = false
       }).catch((err)=>{
           this.errors = err.response.data.errors
       })
     },
+    editCategory(category){
+      this.categoryDialog = true
+      this.form = category
+    },
+    updateCategory(){
+      axios.put('/admin/category/'+this.form.id, this.form)
+      .then((res)=>{
+        
+        this.$message({
+            message: "Category Update Successfully...",
+            type: "success",
+          });
+          this.clearData();
+          this.categoryList();
+          this.categoryDialog = false
+      }).catch((err)=>{
+          this.errors = err.response.data.errors
+      })
+    },
+
     clearData(){
       this.errors = {}
+      this.form = {}
     }
   },
   created() {

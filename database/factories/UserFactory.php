@@ -4,6 +4,7 @@
 
 use App\User;
 use App\Model\Category;
+use App\Model\Brand;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -30,6 +31,11 @@ $factory->define(User::class, function (Faker $faker) {
 
 
 $factory->define(Category::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+    ];
+});
+$factory->define(Brand::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
     ];

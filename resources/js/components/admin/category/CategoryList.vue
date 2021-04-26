@@ -14,6 +14,12 @@
                     >Add New <i class="el-icon-plus"></i
                   ></el-button>
                 </div>
+                <el-button
+                  @click="multipleDelete"
+                  v-if="multipleSelection.length > 0"
+                  type="danger"
+                  >Multiple Delete <i class="el-icon-delete"></i
+                ></el-button>
               </div>
               <el-table
                 ref="multipleTable"
@@ -33,17 +39,17 @@
                 <el-table-column label="Action" width="150">
                   <template slot-scope="scope">
                     <el-button
-                      type="text"
+                      type="primary"
                       size="small"
                       @click.prevent="editCategory(scope.row)"
-                      >Edit</el-button
+                      ><i class="el-icon-edit"></i></el-button
                     >
                     <el-button
                       @click="deleteCategory(scope.row.id)"
-                      type="text"
+                      type="danger"
                       size="small"
-                      >Delete</el-button
-                    >
+                      ><i class="el-icon-delete"></i
+                    ></el-button>
                   </template>
                 </el-table-column>
               </el-table>
@@ -100,7 +106,7 @@ export default {
   name: "CategoryList",
   data() {
     return {
-      currentPage : 1,
+      currentPage: 1,
       multipleSelection: [],
       categoryDialog: false,
       form: {
@@ -111,8 +117,21 @@ export default {
   },
 
   methods: {
-    handleCurrentChange(){
-      this.$store.dispatch("category/categoryList",this.currentPage);
+    multipleDelete() {
+      // console.log(this.multipleSelection);
+      axios
+        .post("/admin/multiple-category/delete", this.multipleSelection)
+        .then((res) => {
+          this.$message({
+            message: "Category Delete Successfully...",
+            type: "success",
+          });
+
+          this.categoryList();
+        });
+    },
+    handleCurrentChange() {
+      this.$store.dispatch("category/categoryList", this.currentPage);
       // console.log(this.currentPage)
     },
     categoryAddNew() {
@@ -137,7 +156,7 @@ export default {
       this.multipleSelection = val;
     },
     categoryList() {
-      this.$store.dispatch("category/categoryList",this.currentPage);
+      this.$store.dispatch("category/categoryList", this.currentPage);
     },
     deleteCategory(id) {
       this.$store.dispatch("category/deleteCategory", id);

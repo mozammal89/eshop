@@ -18,7 +18,7 @@ Route::group(['middleware' => 'auth:admin'], function(){
     // Category Controller 
     Route::resource('category','CategoryController');
 
-    // Route::get('/categoryDelete/{id}','CategoryController@categoryDestroy');
+    Route::post('/multiple-category/delete','CategoryController@MultipleCatDelete')->name('admin.multiple.category.delete');
 });
 
 

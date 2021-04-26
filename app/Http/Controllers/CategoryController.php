@@ -108,6 +108,14 @@ class CategoryController extends Controller
         return $this->index();
     }
 
+    public function MultipleCatDelete(Request $request)
+    {
+        foreach($request->all() as $category){
+            Category::find($category['id'])->delete();
+        }
+        return $this->index();
+    }
+
     // public function categoryDestroy($id)
     // {
     //     // dd($id);
